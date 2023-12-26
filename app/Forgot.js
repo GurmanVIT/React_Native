@@ -8,10 +8,8 @@ import {
     Image,
 } from 'react-native';
 
-const LogIn = ({ navigation }) => {
-
+const Forgot = ({ navigation }) => {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     return (
         <ScrollView style={styles.container} behavior="padding">
@@ -21,34 +19,22 @@ const LogIn = ({ navigation }) => {
                     style={{ width: 40, height: 40 }}
 
                 /></Text>
-            <Text style={styles.inner}>Sign in to your account</Text>
-            <Text style={styles.paragraph}>Plase sign in to enter in app</Text>
+            <Text style={styles.inner}>Forgot Password</Text>
+            <Text style={styles.paragraph}>Please enter your email id.We will send you OTP to reset your password.</Text>
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
                     autoCapitalize="none"
                     value={email}
                     onChangeText={setEmail}
-                    placeholder='Email'
+                    placeholder='Enter Email'
                 />
             </View>
 
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    autoCapitalize="none"
-                    value={password}
-                    onChangeText={setPassword}
-                    placeholder='Password'
-                />
-            </View>
-
-            <Text style={styles.forgot} onPress={() => navigation.navigate("Forgot")}>Forgot Password ?</Text>
 
             <View style={styles.button} >
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Send</Text>
             </View>
-            <Text style={styles.upper}> Don't have an account ?  <Text style={styles.sign} onPress={() => { navigation.navigate("SignUp") }}> Sign Up</Text></Text>
         </ScrollView >
     );
 };
@@ -82,11 +68,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         backgroundColor: '#EDF3F2',
     },
-    forgot: {
-        textAlign: 'right',
-        fontWeight: 'bold',
-        marginVertical: 30,
-    },
     button: {
         backgroundColor: '#5F8FD8',
         height: 45,
@@ -94,22 +75,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
+        marginTop: 20,
     },
     buttonText: {
         color: '#FFF',
         fontSize: 16,
         fontWeight: 'bold',
     },
-    upper: {
-        marginTop: 30,
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    sign: {
-        fontWeight: 'bold',
-        color: '#000',
-    },
 
 });
 
-export default LogIn;
+export default Forgot;

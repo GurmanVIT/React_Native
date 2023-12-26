@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
     TextInput,
     StyleSheet,
-    CheckBox,
     ScrollView,
+    Image,
 } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 
 const SignUp = ({ navigation }) => {
 
+    const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
     return (
         <ScrollView style={styles.container} behavior="padding">
+            <Text onPress={() => { navigation.navigate("Back") }} style={{ textAlign: 'center', marginTop: 20 }}>
+                <Image
+                    source={require('../app/img/back.png')}
+                    style={{ width: 40, height: 40 }}
+
+                /></Text>
             <Text style={styles.inner}>Sign in to your account</Text>
             <Text style={styles.paragraph}>Plase sign in to enter in app</Text>
             <TextInput
@@ -23,7 +32,7 @@ const SignUp = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 autoCapitalize="none"
-                placeholder='Namw'
+                placeholder='Name'
             />
 
             <TextInput
@@ -45,17 +54,20 @@ const SignUp = ({ navigation }) => {
             />
 
             <View style={styles.checkboxContainer}>
-                {/* <CheckBox
-                    style={styles.checkbox}
-                /> */}
+                <CheckBox
+                    disabled={false}
+                    value={toggleCheckBox}
+                    onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                />
 
-                <Text style={styles.label}>I have carefully read the Service Agreement and Use</Text>
+
+                <Text style={styles.label} onPress={() => { setToggleCheckBox(!toggleCheckBox) }}>I have carefully read the Service Agreement and Use</Text>
             </View>
 
             <View style={styles.button} >
                 <Text style={styles.buttonText}>Sign Up</Text>
             </View>
-            <Text style={styles.upper}> Already have an account ?  <Text style={styles.sign} onPress={() => navigation.goBack()}>Sign Up</Text></Text>
+            <Text style={styles.upper}> Already have an account ?  <Text style={styles.sign} onPress={() => navigation.navigate("Login")}>Sign Up</Text></Text>
         </ScrollView >
     );
 };
@@ -123,7 +135,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#000',
     },
-
 });
 
 export default SignUp;
