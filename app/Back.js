@@ -12,6 +12,9 @@ const Back = ({ navigation }) => {
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("SwitchRadio") }}>SwitchRadio</Text>
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Sliders") }}>Sliders</Text>
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Tabs") }}>Tabs</Text>
+            <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Api") }}>Api</Text>
+            <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Post") }}>Post</Text>
+            <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Redux") }}>Redux</Text>
         </View>
     )
 }
