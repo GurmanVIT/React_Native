@@ -1,29 +1,29 @@
 import { Button, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos } from './redux/slice/authSlice';
+import { fetchss } from '../app/redux/slice/TodoTodo';
 
-const Redux = () => {
+const ReduxSecound = () => {
 
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
 
-    console.log("state", state);
+    console.log("state===>", state.todo);
 
     const getData = () => {
-        dispatch(fetchTodos())
+        dispatch(fetchss())
     }
 
     return (
         <View>
             <Button
-                title='Fetch Todos'
+                title='Fetch'
                 onPress={() => getData()}
             />
         </View>
     )
 }
 
-export default Redux
+export default ReduxSecound
 
 const styles = StyleSheet.create({})

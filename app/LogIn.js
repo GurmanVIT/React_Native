@@ -7,11 +7,29 @@ import {
     ScrollView,
     Image,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTodos, loginUser } from './redux/slice/authSlice';
 
 const LogIn = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.auth);
+
+    console.log("state", state.user.data);
+
+    const login = () => {
+        const credentials = {
+            email: email,
+            password: password,
+            fcmToken: "abc"
+        }
+        dispatch(loginUser(credentials))
+    }
+
 
     return (
         <ScrollView style={styles.container} behavior="padding">
@@ -28,7 +46,7 @@ const LogIn = ({ navigation }) => {
                     style={styles.input}
                     autoCapitalize="none"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={(val) => setEmail(val)}
                     placeholder='Email'
                 />
             </View>
@@ -38,7 +56,7 @@ const LogIn = ({ navigation }) => {
                     style={styles.input}
                     autoCapitalize="none"
                     value={password}
-                    onChangeText={setPassword}
+                    onChangeText={(val) => setPassword(val)}
                     placeholder='Password'
                 />
             </View>
@@ -46,7 +64,8 @@ const LogIn = ({ navigation }) => {
             <Text style={styles.forgot} onPress={() => navigation.navigate("Forgot")}>Forgot Password ?</Text>
 
             <View style={styles.button} >
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText} onPress={() => login()}
+                >Login</Text>
             </View>
             <Text style={styles.upper}> Don't have an account ?  <Text style={styles.sign} onPress={() => { navigation.navigate("SignUp") }}> Sign Up</Text></Text>
         </ScrollView >

@@ -15,6 +15,7 @@ const Back = ({ navigation }) => {
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Api") }}>Api</Text>
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Post") }}>Post</Text>
             <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("Redux") }}>Redux</Text>
+            <Text style={{ marginVertical: 10, fontSize: 17, fontWeight: "bold" }} onPress={() => { navigation.navigate("ReduxSecound") }}>ReduxSecound</Text>
         </View>
     )
 }

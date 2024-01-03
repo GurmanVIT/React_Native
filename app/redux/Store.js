@@ -1,9 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "../redux/slice/Todo";
+// src/redux/store.js
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import authReducer from './slice/authSlice';
 
-
-export const store = configureStore({
+const store = configureStore({
     reducer: {
-        todo: todoReducer,
+        auth: authReducer,
     }
 });
+
+export default store;
