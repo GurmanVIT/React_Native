@@ -1,7 +1,6 @@
 import { Button, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos } from './redux/slice/authSlice';
 
 const Redux = () => {
 
@@ -10,15 +9,15 @@ const Redux = () => {
 
     console.log("state", state);
 
-    const getData = () => {
-        dispatch(fetchTodos())
+    const login = () => {
+        dispatch(loginUser())
     }
 
     return (
         <View>
             <Button
                 title='Fetch Todos'
-                onPress={() => getData()}
+                onPress={() => login()}
             />
         </View>
     )

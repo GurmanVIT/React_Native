@@ -8,7 +8,7 @@ import {
     Image,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos, loginUser } from './redux/slice/authSlice';
+import { loginUser } from './redux/slice/authSlice';
 
 const LogIn = ({ navigation }) => {
 
@@ -19,7 +19,7 @@ const LogIn = ({ navigation }) => {
     const dispatch = useDispatch();
     const state = useSelector((state) => state.auth);
 
-    console.log("state", state.user.data);
+    console.log("state", state.user);
 
     const login = () => {
         const credentials = {
@@ -30,7 +30,6 @@ const LogIn = ({ navigation }) => {
         dispatch(loginUser(credentials))
     }
 
-
     return (
         <ScrollView style={styles.container} behavior="padding">
             <Text onPress={() => { navigation.navigate("Back") }} style={{ textAlign: 'center', marginTop: 20 }}>
@@ -39,7 +38,7 @@ const LogIn = ({ navigation }) => {
                     style={{ width: 40, height: 40 }}
 
                 /></Text>
-            <Text style={styles.inner}>Sign in to your account</Text>
+            <Text style={styles.inner}>Login in to your account</Text>
             <Text style={styles.paragraph}>Plase sign in to enter in app</Text>
             <View style={styles.inputContainer}>
                 <TextInput

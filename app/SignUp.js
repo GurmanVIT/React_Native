@@ -8,10 +8,48 @@ import {
     Image,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from './redux/authSliceSignup';
 
 const SignUp = ({ navigation }) => {
 
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.auth);
+    console.log("state", state);
+
+
+    const handleSignup = () => {
+
+        const payload = {
+            email: "aman.vit@gmail.com",
+            password: "123456",
+            firstName: "Aman",
+            lastName: "Singh",
+            countryCode: "+91",
+            mobileNumber: "6280896767",
+            referralCode: "",
+            dateOfBirth: "",
+            experienceOfYears: 2,
+            country: "sds",
+            postalCode: "2342432",
+            address: "sdf",
+            latitude: "23.23232",
+            longitude: "45.34343",
+            type: 2
+        }
+
+
+        try {
+            dispatch(signupUser(payload));
+            // Handle success, e.g., navigate to another screen
+        } catch (error) {
+            // Handle error, e.g., display an error message
+            console.error('signup failed:', error);
+        }
+    };
+
 
     return (
         <ScrollView style={styles.container} behavior="padding">
@@ -19,8 +57,8 @@ const SignUp = ({ navigation }) => {
                 <Image
                     source={require('../app/img/back.png')}
                     style={{ width: 40, height: 40 }}
-
-                /></Text>
+                />
+            </Text>
             <Text style={styles.inner}>Sign in to your account</Text>
             <Text style={styles.paragraph}>Plase sign in to enter in app</Text>
             <TextInput
@@ -38,6 +76,12 @@ const SignUp = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 autoCapitalize="none"
+                placeholder='Number'
+            />
+
+            <TextInput
+                style={styles.input}
+                autoCapitalize="none"
                 placeholder='Email'
             />
 
@@ -45,12 +89,6 @@ const SignUp = ({ navigation }) => {
                 style={styles.input}
                 autoCapitalize="none"
                 placeholder='Password'
-            />
-
-            <TextInput
-                style={styles.input}
-                autoCapitalize="none"
-                placeholder='Confirm Password'
             />
 
             <View style={styles.checkboxContainer}>
@@ -65,9 +103,9 @@ const SignUp = ({ navigation }) => {
             </View>
 
             <View style={styles.button} >
-                <Text style={styles.buttonText}>Sign Up</Text>
+                <Text style={styles.buttonText} onPress={() => handleSignup()}>Sign Up</Text>
             </View>
-            <Text style={styles.upper}> Already have an account ?  <Text style={styles.sign} onPress={() => navigation.navigate("Login")}>Sign Up</Text></Text>
+            <Text style={styles.upper}> Already have an account ?  <Text style={styles.sign} onPress={() => navigation.navigate("LogIn")}>Sign Up</Text></Text>
         </ScrollView >
     );
 };

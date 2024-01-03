@@ -2,11 +2,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = {
-    user: null,
-    status: 'idle',
-    error: null,
-};
 
 export const loginUser = createAsyncThunk('auth/loginUser', async (credentials) => {
     try {
@@ -19,20 +14,24 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (credentials) 
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState,
-    reducers: {},
+
+    initialState: {
+        isLoading: false,
+        data: null,
+    },
     extraReducers: (builder) => {
         builder
             .addCase(loginUser.pending, (state) => {
-                state.status = 'loading';
+                state.isLoading = true;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.user = action.payload;
+                state.isLoading = false;
+                state.data = action.payload;
+                console.log(state.data);
             })
             .addCase(loginUser.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message;
+                console.log('Error', action.payload);
+                state.isError = true;
             });
     },
 });

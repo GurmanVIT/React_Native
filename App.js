@@ -14,7 +14,6 @@ import Api from './app/Api';
 import Post from './app/Post';
 import Redux from './app/Redux';
 import { Provider } from 'react-redux';
-import ReduxSecound from './app/ReduxSecound';
 import store from './app/redux/store';
 
 
@@ -39,7 +38,6 @@ const App = () => {
           <Stack.Screen name="Api" component={Api} />
           <Stack.Screen name="Post" component={Post} />
           <Stack.Screen name="Redux" component={Redux} />
-          <Stack.Screen name="ReduxSecound" component={ReduxSecound} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
